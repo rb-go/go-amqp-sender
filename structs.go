@@ -5,7 +5,7 @@ import "github.com/streadway/amqp"
 type Sender struct {
 	amqpConnection *amqp.Connection
 	amqpChannel    *amqp.Channel
-
+	// notification channels
 	amqpConnectionNotifyClose    chan *amqp.Error
 	amqpConnectionNotifyBlocked  chan amqp.Blocking
 	amqpChannelNotifyCancel      chan string
