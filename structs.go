@@ -2,6 +2,7 @@ package amqpsender
 
 import "github.com/streadway/amqp"
 
+// Sender basic struct that contains connection and notify channels
 type Sender struct {
 	amqpConnection *amqp.Connection
 	amqpChannel    *amqp.Channel
