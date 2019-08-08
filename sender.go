@@ -20,6 +20,7 @@ func (sndr *Sender) Start(connectionString string, amqpConfig amqp.Config, noWai
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to RabbitMQ")
 	}
+
 	sndr.amqpChannel, err = sndr.amqpConnection.Channel()
 	if err != nil {
 		return fmt.Errorf("failed to open a channel: %v", err)
