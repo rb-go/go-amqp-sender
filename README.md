@@ -1,7 +1,7 @@
 
 
 
-# go-amqp-sender
+# amqp-sender
 simple library for task sending into amqp 
 
 [Website](https://www.riftbit.com) | [Contributing](https://www.riftbit.com/How-to-Contribute)
@@ -16,7 +16,7 @@ simple library for task sending into amqp
 ## Installation
 
 ```
-go get -u github.com/riftbit/go-amqp-sender
+go get -u github.com/rb-pkg/amqp-sender
 ```
 
 ## Usage
