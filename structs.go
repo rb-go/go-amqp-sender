@@ -1,6 +1,6 @@
 package amqpsender
 
-import "github.com/streadway/amqp"
+import "github.com/rb-pkg/amqp"
 
 // Sender basic struct that contains connection and notify channels
 type Sender struct {

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	"github.com/streadway/amqp"
+	"github.com/rb-pkg/amqp"
 )
 
 // NewSender returns new Sender instance
@@ -97,23 +97,23 @@ func (sndr *Sender) GetChannelNotifyReturn() chan amqp.Return {
 }
 
 // SendTask sends job task to AMQP
-func (sndr *Sender) SendTask(exchangeName string, routingKey string, mandatory bool, immediate bool, amqpPub amqp.Publishing) error {
+func (sndr *Sender) SendTask(exchangeName string, routingKey string, mandatory bool, immediate bool, amqpPub *amqp.Publishing) error {
 	return sndr.amqpChannel.Publish(exchangeName, routingKey, mandatory, immediate, amqpPub)
 }
 
 // SendTaskWithCurrentTimestamp sends job task to AMQP
-func (sndr *Sender) SendTaskWithCurrentTimestamp(exchangeName string, routingKey string, mandatory bool, immediate bool, amqpPub amqp.Publishing) error {
+func (sndr *Sender) SendTaskWithCurrentTimestamp(exchangeName string, routingKey string, mandatory bool, immediate bool, amqpPub *amqp.Publishing) error {
 	amqpPub.Timestamp = time.Now()
 	return sndr.amqpChannel.Publish(exchangeName, routingKey, mandatory, immediate, amqpPub)
 }
 
 // SendTaskSimple sends job task to AMQP
-func (sndr *Sender) SendTaskSimple(exchangeName string, routingKey string, amqpPub amqp.Publishing) error {
+func (sndr *Sender) SendTaskSimple(exchangeName string, routingKey string, amqpPub *amqp.Publishing) error {
 	return sndr.amqpChannel.Publish(exchangeName, routingKey, false, false, amqpPub)
 }
 
 // SendTaskSimpleWithCurrentTimestamp sends job task to AMQP
-func (sndr *Sender) SendTaskSimpleWithCurrentTimestamp(exchangeName string, routingKey string, amqpPub amqp.Publishing) error {
+func (sndr *Sender) SendTaskSimpleWithCurrentTimestamp(exchangeName string, routingKey string, amqpPub *amqp.Publishing) error {
 	amqpPub.Timestamp = time.Now()
 	return sndr.amqpChannel.Publish(exchangeName, routingKey, false, false, amqpPub)
 }
